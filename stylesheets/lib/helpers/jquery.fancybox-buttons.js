@@ -15,7 +15,7 @@
  *     position - 'top' or 'bottom'
  * 
  */
-(function ($) {
+(($ => {
 	//Shortcut for fancyBox object
 	var F = $.fancybox;
 
@@ -25,7 +25,7 @@
 		list: null,
 		buttons: {},
 
-		update: function () {
+		update() {
 			var toggle = this.buttons.toggle.removeClass('btnDisabled btnToggleOn');
 
 			//Size toggle button
@@ -37,7 +37,7 @@
 			}
 		},
 
-		beforeLoad: function (opts) {
+		beforeLoad(opts) {
 			//Remove self if gallery do not have at least two items
 			if (F.group.length < 2) {
 				F.coming.helpers.buttons = false;
@@ -50,19 +50,19 @@
 			F.coming.margin[ opts.position === 'bottom' ? 2 : 0 ] += 30;
 		},
 
-		onPlayStart: function () {
+		onPlayStart() {
 			if (this.list) {
 				this.buttons.play.attr('title', 'Pause slideshow').addClass('btnPlayOn');
 			}
 		},
 
-		onPlayEnd: function () {
+		onPlayEnd() {
 			if (this.list) {
 				this.buttons.play.attr('title', 'Start slideshow').removeClass('btnPlayOn');
 			}
 		},
 
-		afterShow: function (opts) {
+		afterShow(opts) {
 			var buttons;
 
 			if (!this.list) {
@@ -98,11 +98,11 @@
 			this.update();
 		},
 
-		onUpdate: function () {
+		onUpdate() {
 			this.update();
 		},
 
-		beforeClose: function () {
+		beforeClose() {
 			if (this.list) {
 				this.list.remove();
 			}
@@ -112,4 +112,4 @@
 		}
 	};
 
-}(jQuery));
+})(jQuery));
